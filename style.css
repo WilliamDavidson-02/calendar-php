@@ -1,10 +1,26 @@
 :root {
-  --bg-dark: rgb(20, 20, 20);
-  --bg-light: rgb(235, 235, 235);
+  --border: 1px solid var(--border-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
+    --bg-color: #141414;
+    --border-color: #232323;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #141414;
+    --bg-color: #ebebeb;
+    --border-color: #d0d0d0;
+  }
 }
 
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -14,14 +30,62 @@ body {
   height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--bg-dark);
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: var(--bg-dark);
-  }
+button {
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+body,
+button {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.date-type-container {
+  margin-top: 20px;
+  display: flex;
+  border-radius: 5px;
+}
+
+.date-select {
+  padding: 5px 10px;
+  background: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.date-type-container {
+  border: var(--border);
+}
+
+.date-select:hover {
+  background: var(--border-color);
+  transition: 0.3s;
+}
+
+.selected-date {
+  background: var(--border-color);
+}
+
+.date-select:nth-child(2) {
+  border-left: var(--border);
+  border-right: var(--border);
+}
+
+.date-select:nth-child(3) {
+  border-right: var(--border);
+}
+
+.year-title {
+  font-weight: 300;
+  padding-left: 10px;
 }
