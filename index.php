@@ -2,7 +2,10 @@
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/createDates.php';
 
+date_default_timezone_set("Europe/Stockholm");
+
 $dateType = (isset($_POST['dateType'])) ? $_POST['dateType'] : 'month';
+
 $currentDate = [
     'day' => date('d'),
     'month' => date('F'),
@@ -27,7 +30,7 @@ $currentDate = [
             <h1><?= ucwords($currentDate['month']); ?><span class="year-title"><?= ucwords($currentDate['year']); ?></span></h1>
         </nav>
         <div>
-
+            <?php require __DIR__ . '/calendar' . ucwords($dateType) . '.php'; ?>
         </div>
     </section>
 </main>

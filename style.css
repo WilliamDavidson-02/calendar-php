@@ -1,5 +1,6 @@
 :root {
   --border: 1px solid var(--border-color);
+  --current-date-red: #d64045;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -7,6 +8,7 @@
     --text-color: #fff;
     --bg-color: #141414;
     --border-color: #232323;
+    --text-bg-blend-color: #363636;
   }
 }
 
@@ -15,6 +17,7 @@
     --text-color: #141414;
     --bg-color: #ebebeb;
     --border-color: #d0d0d0;
+    --text-bg-blend-color: #bababa;
   }
 }
 
@@ -114,20 +117,51 @@ h1 {
 .date-selection-container {
   display: flex;
   width: 100%;
-  gap: 10px;
+  gap: 5px;
 }
 
 .date-selection-container button {
   flex-grow: 1;
   border: var(--border);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   transition: 0.3s;
 }
 
 .date-selection-container button:hover {
   background: var(--border-color);
   transition: 0.3s;
+}
+
+.hour-container {
+  width: 100%;
+  height: 100px;
+}
+
+.hour {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time {
+  color: var(--text-bg-blend-color);
+  font-size: 0.8rem;
+}
+
+.hour-line-break {
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.current-date-red-text {
+  color: var(--current-date-red) !important;
+}
+
+.current-date-red-bg {
+  background: var(--current-date-red);
 }
 
 /* Tablet */
