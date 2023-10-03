@@ -5,41 +5,32 @@ if (isset($_POST['dateType'])) {
     $dateType = $_POST['dateType'];
 }
 
-if (isset($_POST['dateSelection']) && $dateType === 'year') {
-    switch ($_POST['dateSelection']) {
-        case 'prevYear':
-            $_SESSION['year']--;
-            break;
-        case 'nextYear':
-            $_SESSION['year']++;
-            break;
-        default:
+if (isset($_POST['dateSelection'])) {
+    $operation = $_POST['dateSelection'];
+
+    if ($dateType === 'year') {
+        if (in_array($operation, ['prevYear', 'nextYear'])) {
+            $_SESSION['year'] += $operation === 'prevYear' ? -1 : 1;
+        } else {
             $_SESSION['year'] = date('Y');
-    }
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
-} else if (isset($_POST['dateSelection']) && $dateType === 'month') {
-    switch ($_POST['dateSelection']) {
-        case 'prevYear':
-            if ($_SESSION['month'] === 0) {
+        }
+    } else if ($dateType === 'month') {
+        if (in_array($operation, ['prevYear', 'nextYear'])) {
+            $_SESSION['month'] += $operation === 'prevYear' ? -1 : 1;
+
+            if ($_SESSION['month'] < 0) {
                 $_SESSION['month'] = 11;
                 $_SESSION['year']--;
-            } else {
-                $_SESSION['month']--;
-            }
-            break;
-        case 'nextYear':
-            if ($_SESSION['month'] === 11) {
+            } else if ($_SESSION['month'] > 11) {
                 $_SESSION['month'] = 0;
                 $_SESSION['year']++;
-            } else {
-                $_SESSION['month']++;
             }
-            break;
-        default:
+        } else {
             $_SESSION['month'] = date('m') - 1;
             $_SESSION['year'] = date('Y');
+        }
     }
+
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
 }
