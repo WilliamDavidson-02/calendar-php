@@ -28,6 +28,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 main {
@@ -35,7 +37,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  width: 100%;
+  width: 90%;
 }
 
 button {
@@ -50,13 +52,24 @@ button {
   color: var(--text-color);
 }
 
+section {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
 .date-type-container {
   margin-top: 20px;
   display: flex;
   border-radius: 5px;
+  width: 100%;
 }
 
 .date-select {
+  flex-grow: 1;
   padding: 5px 10px;
   background: none;
   outline: none;
@@ -88,4 +101,55 @@ button {
 .year-title {
   font-weight: 300;
   padding-left: 10px;
+}
+
+.date-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.date-selection-container {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.date-selection-container button {
+  flex-grow: 1;
+  border: var(--border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.date-selection-container button:hover {
+  background: var(--border-color);
+  transition: 0.3s;
+}
+
+/* Tablet */
+@media (min-width: 500px) {
+  .date-type-container {
+    max-width: 500px;
+  }
+
+  .date-nav {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .date-selection-container {
+    width: unset;
+  }
+
+  .date-selection-container button {
+    flex-grow: unset;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
 }
