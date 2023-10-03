@@ -1,15 +1,23 @@
 <?php
-require_once __DIR__ . '/header.php';
-require_once __DIR__ . '/createDates.php';
+
+session_start();
 
 date_default_timezone_set("Europe/Stockholm");
 
-$dateType = (isset($_POST['dateType'])) ? $_POST['dateType'] : 'month';
+require_once __DIR__ . '/header.php';
+
+$dateType = (isset($_SESSION['dateType'])) ? $_SESSION['dateType'] : 'month';
+$_SESSION['year'] = (isset($_SESSION['year'])) ? $_SESSION['year'] : date('Y');
+$_SESSION['month'] = (isset($_SESSION['month'])) ? $_SESSION['month'] : date('m') - 1;
+$_SESSION['day'] = (isset($_SESSION['day'])) ? $_SESSION['day'] : date('d');
+
+require_once __DIR__ . '/dateNavigationControls.php';
+require_once __DIR__ . '/createDates.php';
 
 $currentDate = [
-    'day' => date('d'),
-    'month' => date('F'),
-    'year' => date('Y')
+    'day' => $_SESSION['day'],
+    'month' => $calendar[$_SESSION['month']]['month'],
+    'year' => $_SESSION['year']
 ];
 
 ?>
@@ -23,11 +31,17 @@ $currentDate = [
     <section>
         <nav class="date-nav">
             <form class="date-selection-container" method="post">
-                <button type="submit" name='dateSelection' value="prevDate"><i class="fa-solid fa-chevron-left"></i></button>
-                <button type="submit" name='dateSelection' value="currentDate">Today</button>
-                <button type="submit" name='dateSelection' value="nextDate"><i class="fa-solid fa-chevron-right"></i></button>
+                <button type="submit" name='dateSelection' value="prevYear"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="submit" name='dateSelection' value="currentYear">Today</button>
+                <button type="submit" name='dateSelection' value="nextYear"><i class="fa-solid fa-chevron-right"></i></button>
             </form>
-            <h1><?= ucwords($currentDate['month']); ?><span class="year-title"><?= ucwords($currentDate['year']); ?></span></h1>
+            <h1 class="date-title-container">
+                <?php if ($dateType === 'day') : ?>
+                    <span class="date-title"><?= $currentDate['day']; ?></span>
+                <?php endif; ?>
+                <span><?= $currentDate['month']; ?></span>
+                <span class="date-title"><?= $currentDate['year']; ?></span>
+            </h1>
         </nav>
         <div>
             <?php require __DIR__ . '/calendar' . ucwords($dateType) . '.php'; ?>

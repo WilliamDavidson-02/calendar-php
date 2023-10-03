@@ -101,9 +101,13 @@ h1 {
   border-right: var(--border);
 }
 
-.year-title {
-  font-weight: 300;
-  padding-left: 10px;
+.date-title-container {
+  display: flex;
+  gap: 10px;
+}
+
+.date-title {
+  font-weight: 200;
 }
 
 .date-nav {
@@ -162,6 +166,23 @@ h1 {
 
 .current-date-red-bg {
   background: var(--current-date-red);
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+}
+
+.year-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.year-card {
+  width: calc(25% - 20px);
 }
 
 /* Tablet */
