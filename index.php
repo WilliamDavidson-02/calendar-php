@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/header.php';
+require_once __DIR__ . '/createDates.php';
 
 $dateType = (isset($_POST['dateType'])) ? $_POST['dateType'] : 'month';
-$calendar = [
-    'days' => ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+$currentDate = [
+    'day' => date('d'),
     'month' => date('F'),
     'year' => date('Y')
 ];
@@ -23,7 +24,7 @@ $calendar = [
                 <button type="submit" name='dateSelection' value="currentDate">Today</button>
                 <button type="submit" name='dateSelection' value="nextDate"><i class="fa-solid fa-chevron-right"></i></button>
             </form>
-            <h1><?= ucwords($calendar['month']); ?><span class="year-title"><?= ucwords($calendar['year']); ?></span></h1>
+            <h1><?= ucwords($currentDate['month']); ?><span class="year-title"><?= ucwords($currentDate['year']); ?></span></h1>
         </nav>
         <div>
 
