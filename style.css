@@ -168,12 +168,6 @@ h1 {
   background: var(--current-date-red);
 }
 
-.month-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  width: 100%;
-}
-
 .year-container {
   display: flex;
   flex-wrap: wrap;
@@ -183,6 +177,18 @@ h1 {
 
 .year-card {
   width: calc(25% - 20px);
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  height: auto;
+}
+
+.week-days-title {
+  text-align: end;
+  padding: 5px 0px;
 }
 
 /* Tablet */

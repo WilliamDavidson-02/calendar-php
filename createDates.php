@@ -34,14 +34,3 @@ foreach ($months as $month) {
         ]
     ];
 }
-
-/* 
-selected year is 2023
-    in year we need to se all months and the dates
-selected months is october
-    we need to se all the date of october for the selected year
-selected week is 41
-    we need to see all the dates in week 41 of the selected year
-selected day is october 3
-    show october 3 of the selected year
-*/
