@@ -23,12 +23,19 @@ for ($i = 1; $i <= $calendar[$_SESSION['month']]['monthLength']; $i++) {
 
 // Gets the remaining days of the last week of the month from the next month
 if ($lastDayOfMonthOffset < 7) {
-    $nextMonth = $_SESSION['month'] + 1 > 11 ? 0 : $_SESSION['month'] + 1;
-    $nextMonthLength = $calendar[$nextMonth]['monthLength'];
     for ($i = 1; $i <= 7 - $lastDayOfMonthOffset; $i++) {
         $month[] = $i;
     }
 }
+
+// We want to display 6 rows of weeks, some time depending on the month we might only get 5 row there for lets make on last row.
+if (count($month) / 7 < 6) {
+    $lastSunday = end($month) !== $calendar[$_SESSION['month']]['monthLength'] ? end($month) + 1 : 1;
+    for ($i = 0; $i < 7; $i++) {
+        $month[] = $lastSunday + $i;
+    }
+}
+
 ?>
 
 <div class="month-grid">
