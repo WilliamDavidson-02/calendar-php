@@ -257,10 +257,6 @@ td {
 
 /* Desktop */
 @media (min-width: 1024px) {
-  .calender-day {
-    height: 150px;
-  }
-
   .year-card {
     width: calc(25% - 20px);
   }
