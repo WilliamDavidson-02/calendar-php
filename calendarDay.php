@@ -1,6 +1,4 @@
-<?php $dayToDisplay = $_SESSION['day'] <= 9 ? str_split($_SESSION['day'])[1] : $_SESSION['day']; ?>
-
-<h4><?= date('l', mktime(0, 0, 0, $_SESSION['month'] + 1, $dayToDisplay, $_SESSION['year'])) ?></h4>
+<h4><?= date('l', mktime(0, 0, 0, $_SESSION['month'] + 1, $_SESSION['day'], $_SESSION['year'])) ?></h4>
 <div>
     <?php for ($i = 0; $i <= 23; $i++) :
         $time = ($i <= 9) ? "0$i" : "$i"; ?>
